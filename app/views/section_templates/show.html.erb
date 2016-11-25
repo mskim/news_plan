@@ -1,19 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Grid base:</strong>
-  <%= @section_template.grid_base %>
-</p>
-
-<p>
   <strong>Grid key:</strong>
   <%= @section_template.grid_key %>
 </p>
 
-<p>
-  <strong>Has heading:</strong>
-  <%= @section_template.has_heading %>
-</p>
 
-<%= link_to 'Edit', edit_section_template_path(@section_template) %> |
-<%= link_to 'Back', section_templates_path %>
+
+<div align='center'>
+	<%= raw @section_template.svg %>
+</div>
