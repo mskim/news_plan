@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Section Templates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Grid base</th>
+      <th>Grid key</th>
+      <th>Has heading</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @section_templates.each do |section_template| %>
+      <tr>
+        <td><%= section_template.grid_base %></td>
+        <td><%= section_template.grid_key %></td>
+        <td><%= section_template.has_heading %></td>
+        <td><%= link_to 'Show', section_template %></td>
+        <td><%= link_to 'Edit', edit_section_template_path(section_template) %></td>
+        <td><%= link_to 'Destroy', section_template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Section template', new_section_template_path %>

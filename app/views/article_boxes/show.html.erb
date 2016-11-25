@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Grid frame:</strong>
+  <%= @article_box.grid_frame %>
+</p>
+
+<p>
+  <strong>Section template:</strong>
+  <%= @article_box.section_template_id %>
+</p>
+
+<%= link_to 'Edit', edit_article_box_path(@article_box) %> |
+<%= link_to 'Back', article_boxes_path %>

@@ -1,0 +1,1 @@
+json.array! @section_templates, partial: 'section_templates/section_template', as: :section_template

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Article Boxes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Grid frame</th>
+      <th>Section template</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @article_boxes.each do |article_box| %>
+      <tr>
+        <td><%= article_box.grid_frame %></td>
+        <td><%= article_box.section_template_id %></td>
+        <td><%= link_to 'Show', article_box %></td>
+        <td><%= link_to 'Edit', edit_article_box_path(article_box) %></td>
+        <td><%= link_to 'Destroy', article_box, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Article box', new_article_box_path %>

@@ -1,0 +1,1 @@
+json.partial! "section_templates/section_template", section_template: @section_template

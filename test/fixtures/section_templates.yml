@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  grid_base: MyString
+  grid_key: MyString
+  has_heading: false
+
+two:
+  grid_base: MyString
+  grid_key: MyString
+  has_heading: false

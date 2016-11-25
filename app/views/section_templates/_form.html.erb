@@ -1,0 +1,29 @@
+<%= form_for(@section_template) do |f| %>
+  <% if @section_template.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@section_template.errors.count, "error") %> prohibited this section_template from being saved:</h2>
+
+      <ul>
+      <% @section_template.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :grid_base %><br>
+    <%= f.text_field :grid_base %>
+  </div>
+  <div class="field">
+    <%= f.label :grid_key %><br>
+    <%= f.text_field :grid_key %>
+  </div>
+  <div class="field">
+    <%= f.label :has_heading %><br>
+    <%= f.check_box :has_heading %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,1 @@
+json.partial! "article_boxes/article_box", article_box: @article_box

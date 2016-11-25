@@ -1,0 +1,1 @@
+json.array! @article_boxes, partial: 'article_boxes/article_box', as: :article_box
