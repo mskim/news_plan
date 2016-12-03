@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h4>Listing Ad Templates</h4>
+
+<button>Ad type</button>
+<button>Number of Articles</button>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Column count</th>
+      <th>Grid width</th>
+      <th>Grid height</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ad_templates.each do |ad_template| %>
+      <tr>
+        <td><%= ad_template.name %></td>
+        <td><%= ad_template.column_count %></td>
+        <td><%= ad_template.grid_width %></td>
+        <td><%= ad_template.grid_height %></td>
+        <td><%= link_to 'Show', ad_template %></td>
+        <td><%= link_to 'Edit', edit_ad_template_path(ad_template) %></td>
+        <td><%= link_to 'Destroy', ad_template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ad template', new_ad_template_path %>

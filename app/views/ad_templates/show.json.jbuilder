@@ -1,0 +1,1 @@
+json.partial! "ad_templates/ad_template", ad_template: @ad_template

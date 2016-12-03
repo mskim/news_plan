@@ -4,6 +4,7 @@ class CreateSectionTemplates < ActiveRecord::Migration
       t.string :grid_base
       t.string :grid_key
       t.boolean :has_heading
+      t.string :ad_key
 
       t.timestamps null: false
     end

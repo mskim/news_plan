@@ -1,12 +1,22 @@
+require 'csv'
+
+path  = File.dirname(__FILE__) + "/../ad_table.csv"
+File.exist?(path)
+ad_table = File.open(path){|f| f.read}
+rows  = CSV.parse(ad_table)
+keys  = rows.shift
+puts "keys:#{keys}"
+rows.each do |row|
+  puts name            = row[0]
+  puts column_count    = row[1]
+  puts grid_width      = row[2]
+  puts grid_height     = row[3]
+  AdTemplate.where(name: name, column_count: column_count, grid_width: grid_width, grid_height: grid_height).first_or_create
+end
+
 
 GRID_PATTERNS = {
-  '1x1/1':[[0, 0, 1, 1]],
-  '1x2/2':[[0, 0, 2, 1], [0, 1, 2, 1]],
-  '2x2/3':[[0, 0, 2, 1], [2, 0, 1, 2], [0, 1, 2, 1]],
-  '2x2/4':[[0, 0, 1, 1], [1, 0, 1, 1], [0, 1, 1, 1], [1, 1, 1, 1]],
-  '3x3/2':[[0, 0, 2, 2], [2, 2, 1, 1]],
-  '3x3/3':[[0, 0, 1, 1], [1, 1, 1, 1], [2, 2, 1, 1]],
-  '3x3/5':[[0, 0, 3, 1], [0, 1, 3, 1], [0, 2, 1, 1], [1, 2, 1, 1], [2, 2, 1, 1]],
+
   '3x3/6':[[0, 0, 3, 1], [0, 1, 2, 1], [2, 1, 1, 1], [0, 2, 1, 1], [1, 2, 1, 1], [2, 2, 1, 1]],
   '3x3/7':[[0, 0, 3, 1], [0, 1, 1, 1], [1, 1, 1, 1], [2, 1, 1, 1], [0, 2, 1, 1], [1, 2, 1, 1], [2, 2, 1, 1]],
   '3x3/8':[[0, 0, 1, 1], [1, 0, 1, 1], [2, 0, 1, 1], [0, 1, 1, 1], [1, 1, 1, 1], [2, 1, 1, 1], [0, 2, 1, 1], [1, 2, 2, 1]],
@@ -34,7 +44,13 @@ GRID_PATTERNS = {
   '7x12/6':[[0, 0, 4, 3], [4, 0, 3, 5], [0, 3, 4, 2], [0, 5, 4, 2], [4, 5, 3, 2], [0, 7, 7, 5]],
   '7x12/6_1':[[0, 0, 4, 3], [0, 3, 4, 3], [4, 0, 3, 6], [0, 6, 4, 6], [4, 6, 3, 3], [4, 3, 3, 3]],
   '7x12/6_2':[[0, 0, 7, 6], [0, 6, 4, 3], [0, 3, 2, 3], [2, 3, 2, 3], [4, 6, 3, 3], [4, 3, 3, 3]],
-  '7x12/7':[[0, 0, 7, 1], [0, 1, 4, 2], [4, 1, 3, 4], [0, 3, 4, 2], [0, 5, 4, 2], [4, 5, 3, 2], [0, 7, 7, 5]]}
+  '7x12/6_3':[[0, 0, 7, 6], [0, 6, 4, 3], [0, 3, 2, 3], [2, 3, 2, 3], [4, 6, 3, 3], [4, 3, 3, 3]],
+  
+  '7x15/5':[[0, 0, 7, 6], [0, 6, 4, 3], [0, 3, 2, 3], [2, 3, 2, 3], [4, 6, 3, 3]],
+  '7x15/6':[[0, 0, 7, 6], [0, 6, 4, 3], [0, 3, 2, 3], [2, 3, 2, 3], [4, 6, 3, 3],[0,0,1,1]],
+  '7x15/6_1':[[0, 0, 7, 6], [0, 6, 4, 3], [0, 3, 2, 3], [2, 3, 2, 3], [4, 6, 3, 3], [4, 3, 3, 3]]
+  
+  }
 
  GRID_PATTERNS.each do |k, v|
    puts k
@@ -42,8 +58,7 @@ GRID_PATTERNS = {
    grid_base = grid_key.split('/').first
    section = SectionTemplate.where(grid_key: grid_key, grid_base: grid_base).first_or_create
    v.each do |box|
-     puts box
-     puts box.class
      article = ArticleBox.where(grid_frame: box, section_template_id: section.id).first_or_create
    end
  end
+ 

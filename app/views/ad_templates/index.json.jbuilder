@@ -1,0 +1,1 @@
+json.array! @ad_templates, partial: 'ad_templates/ad_template', as: :ad_template

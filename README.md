@@ -2,6 +2,14 @@
 
 Rails app for planning newspaper.
 
+1. Spreadsheet like data is entered
+1. it is converted to sections and issue template is generated.
+1. Ads can be booked in advance
+
+## page_plan 
+
+## ad_plan
+
 ## tables
 
 ### Publication
@@ -21,7 +29,6 @@ Rails app for planning newspaper.
   - issue_id: integer
   - grid_key
 
-
   * has_many :articles
   * has_many :ads
 
@@ -32,8 +39,9 @@ Rails app for planning newspaper.
   - section_id: integer
 
 ### Ad
-  - advertise
+  - advertiser
   - grid_frame: text
+  - kind
   - section_id: integer
 
 ### SectionTemplate
@@ -41,11 +49,14 @@ Rails app for planning newspaper.
   - grid_key
   - has_heading: boolean
   - has_ad: boolean
-
+  - data: text
+  
 ### ArticleBox
   - grid_frame: text
   - section_template_id: integer
 
-### AdBox
-  - grid_frame: text
-  - section_template_id: integer
+### AdTemplate
+  - name
+  - column_count
+  - grid_width
+  - grid_height

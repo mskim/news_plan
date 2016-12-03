@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ad_template.name %>
+</p>
+
+<p>
+  <strong>Column count:</strong>
+  <%= @ad_template.column_count %>
+</p>
+
+<p>
+  <strong>Grid width:</strong>
+  <%= @ad_template.grid_width %>
+</p>
+
+<p>
+  <strong>Grid height:</strong>
+  <%= @ad_template.grid_height %>
+</p>
+
+<%= link_to 'Edit', edit_ad_template_path(@ad_template) %> |
+<%= link_to 'Back', ad_templates_path %>

@@ -1,0 +1,33 @@
+<%= form_for(@ad_template) do |f| %>
+  <% if @ad_template.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ad_template.errors.count, "error") %> prohibited this ad_template from being saved:</h2>
+
+      <ul>
+      <% @ad_template.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :column_count %><br>
+    <%= f.text_field :column_count %>
+  </div>
+  <div class="field">
+    <%= f.label :grid_width %><br>
+    <%= f.text_field :grid_width %>
+  </div>
+  <div class="field">
+    <%= f.label :grid_height %><br>
+    <%= f.text_field :grid_height %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
