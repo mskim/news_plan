@@ -15,7 +15,7 @@ class SectionTemplate < ActiveRecord::Base
     puts "article_boxes:#{article_boxes.length}"
     article_boxes.each_with_index do |article_box, i|
       grid_frame =  article_box.grid_frame.map{|e| e*50}
-      svg_string += "<rect x=\"#{grid_frame[0]}\" y=\"#{grid_frame[1]}\" width=\"#{grid_frame[2]}\" height=\"#{grid_frame[3]}\" style=\"fill:#{colors[i]};stroke:black;\"></rect>\n"
+      svg_string += "<a href=\"/article_boxes/#{article_box.id}\"><rect x=\"#{grid_frame[0]}\" y=\"#{grid_frame[1]}\" width=\"#{grid_frame[2]}\" height=\"#{grid_frame[3]}\" style=\"fill:#{colors[i]};stroke:black;\"></rect></a>\n"
     end
     svg_string += '</svg>'
   end

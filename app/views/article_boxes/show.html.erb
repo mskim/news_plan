@@ -10,5 +10,10 @@
   <%= @article_box.section_template_id %>
 </p>
 
+<div align='center'>
+	<%= raw @article_box.svg %>
+</div>
+
+
 <%= link_to 'Edit', edit_article_box_path(@article_box) %> |
 <%= link_to 'Back', article_boxes_path %>

@@ -23,9 +23,17 @@ Rails app for planning newspaper.
 ### Issue
   - date: date
   - publication_id: integer
+  - spread_plan: text
 
-### Section
+### Spread
+  - page_numbers: text
+  - color
+  - has_many: pages
+
+### Page
   - name
+  - page_number: integer
+  - color_page: boolean
   - issue_id: integer
   - grid_key
 
@@ -34,7 +42,7 @@ Rails app for planning newspaper.
 
 ### Article
   - title
-  - kind
+  - kind		#story, picture
   - grid_frame: text
   - section_id: integer
 
