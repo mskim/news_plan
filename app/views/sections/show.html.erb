@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Issue:</strong>
+  <%= @section.issue_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @section.name %>
+</p>
+
+<p>
+  <strong>Page number:</strong>
+  <%= @section.page_number %>
+</p>
+
+<p>
+  <strong>Color page:</strong>
+  <%= @section.color_page %>
+</p>
+
+<p>
+  <strong>Has heading:</strong>
+  <%= @section.has_heading %>
+</p>
+
+<p>
+  <strong>Grid base:</strong>
+  <%= @section.grid_base %>
+</p>
+
+<p>
+  <strong>Ad type:</strong>
+  <%= @section.ad_type %>
+</p>
+
+<p>
+  <strong>Box count:</strong>
+  <%= @section.box_count %>
+</p>
+
+<%= link_to 'Edit', edit_section_path(@section) %> |
+<%= link_to 'Back', sections_path %>

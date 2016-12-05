@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Sections</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Issue</th>
+      <th>Name</th>
+      <th>Page number</th>
+      <th>Color page</th>
+      <th>Has heading</th>
+      <th>Grid base</th>
+      <th>Ad type</th>
+      <th>Box count</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sections.each do |section| %>
+      <tr>
+        <td><%= section.issue_id %></td>
+        <td><%= section.name %></td>
+        <td><%= section.page_number %></td>
+        <td><%= section.color_page %></td>
+        <td><%= section.has_heading %></td>
+        <td><%= section.grid_base %></td>
+        <td><%= section.ad_type %></td>
+        <td><%= section.box_count %></td>
+        <td><%= link_to 'Show', section %></td>
+        <td><%= link_to 'Edit', edit_section_path(section) %></td>
+        <td><%= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Section', new_section_path %>

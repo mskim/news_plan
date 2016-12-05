@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205024723) do
+ActiveRecord::Schema.define(version: 20161205065328) do
 
   create_table "ad_templates", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 20161205024723) do
     t.string   "grid_height"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "ads", force: :cascade do |t|
+    t.string   "section_id"
+    t.string   "integer"
+    t.string   "ad_type"
+    t.string   "advertiser"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "article_boxes", force: :cascade do |t|
@@ -54,6 +63,19 @@ ActiveRecord::Schema.define(version: 20161205024723) do
     t.string   "grid_key"
     t.boolean  "has_heading"
     t.string   "ad_key"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.integer  "issue_id"
+    t.string   "name"
+    t.integer  "page_number"
+    t.boolean  "color_page"
+    t.boolean  "has_heading"
+    t.string   "grid_base"
+    t.string   "ad_type"
+    t.integer  "box_count"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

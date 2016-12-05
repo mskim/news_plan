@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :ads
+  resources :sections
+  resources :sections
   resources :publications
   resources :publications
   resources :issues

@@ -28,17 +28,16 @@ Rails app for planning newspaper.
   - publication_id: integer
   - spread_plan: text
 
-### Spread
-  - page_numbers: text
-  - color
-  - has_many: pages
 
-### Page
+### Section
+  - issue_id: integer
   - name
   - page_number: integer
   - color_page: boolean
-  - issue_id: integer
-  - grid_key
+  - has_heading: boolean
+  - grid_base
+  - box_count:integer
+  - ad_type
 
   * has_many :articles
   * has_many :ads
@@ -51,10 +50,10 @@ Rails app for planning newspaper.
 
 ### Ad
   - advertiser
-  - grid_frame: text
-  - kind
+  - ad_type
   - section_id: integer
-
+  - grid_frame: text
+  
 ### SectionTemplate
   - grid_base
   - grid_key

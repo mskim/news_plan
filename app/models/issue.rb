@@ -1,41 +1,45 @@
 class Issue < ActiveRecord::Base
   
   belongs_to :publication
+  has_many :sections
   after_create :setup
   
   def setup
     system("mkdir -p #{issue_path}")          unless File.directory?(issue_path)
-    system("mkdir -p #{drop_box_issue_path}") unless File.directory?(drop_box_issue_path)
+    system("mkdir -p #{dropbox_issue_path}") unless File.directory?(dropbox_issue_path)
   end
   
   def issue_path
     publication.publication_path + "/#{id}"
   end
   
-  def drop_box_issue_path
+  def dropbox_issue_path
     publication.dropbox_path + "/#{date}"  
   end
   
-  def generate_issue
+  def generate_sections
     require 'csv'
     # create folders
     rows  = CSV.parse(spread_plan)
-    keys  = rows.shift
+    rows.shift
     rows.each do |row|
-      puts "++++++++"
-      puts spread               = row[0]
-      puts color                = row[1]
-      puts "++++++++"
-      puts first_ad_type        = row[2]
-      puts first_advertiser     = row[3]
-      puts first_article_count  = row[4]
+      spread              = row[0]
+      page_array          = spread.split("_")
+      first_page_number   = page_array[0].to_i
+      second_page_number  = page_array[1].to_i
+      color               = row[1]
+      first_ad_type       = row[2]
+      first_advertiser    = row[3]
+      first_article_count = row[4]
       # create first Page
-      puts second_ad_type       = row[5]
-      puts second_advertiser    = row[6]
-      puts second_article_count = row[7]
+      first = Section.where(issue_id: id, page_number: first_page_number, color_page: color, ad_type: first_ad_type, box_count: first_article_count).first_or_create
+      AdBox.where(section_id: first.id, ad_type: first_ad_type, advertiser: first_advertiser)
+      second_ad_type       = row[5]
+      second_advertiser    = row[6]
+      second_article_count = row[7]      
       # create second Page
-    end
-    
-    
+      second = Section.where(issue_id: id, page_number: second_page_number, color_page: color, ad_type: second_ad_type, box_count: second_article_count).first_or_create      
+      AdBox.where(section_id: second.id, ad_type: second_ad_type, advertiser: second_advertiser)
+    end    
   end
 end

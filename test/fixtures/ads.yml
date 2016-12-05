@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  section_id: MyString
+  integer: MyString
+  ad_type: MyString
+  advertiser: MyString
+
+two:
+  section_id: MyString
+  integer: MyString
+  ad_type: MyString
+  advertiser: MyString
