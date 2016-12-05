@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201070917) do
+ActiveRecord::Schema.define(version: 20161205024723) do
 
   create_table "ad_templates", force: :cascade do |t|
     t.string   "name"
@@ -27,6 +27,26 @@ ActiveRecord::Schema.define(version: 20161201070917) do
     t.integer  "section_template_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+  end
+
+  create_table "issues", force: :cascade do |t|
+    t.integer  "publication_id"
+    t.date     "date"
+    t.text     "spread_plan"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "publications", force: :cascade do |t|
+    t.string   "name"
+    t.string   "paper_size"
+    t.float    "width"
+    t.float    "height"
+    t.float    "margin"
+    t.integer  "page_count"
+    t.text     "sections"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "section_templates", force: :cascade do |t|

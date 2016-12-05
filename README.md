@@ -19,6 +19,9 @@ Rails app for planning newspaper.
   - paper_size
   - width: float
   - height: float
+  - margin: float
+  - page_count: integer
+  - sections: text   #[]
 
 ### Issue
   - date: date

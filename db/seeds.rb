@@ -1,34 +1,44 @@
 require 'csv'
+require 'date'
 
-path  = File.dirname(__FILE__) + "/../ad_table.csv"
-File.exist?(path)
-ad_table = File.open(path){|f| f.read}
-rows  = CSV.parse(ad_table)
-keys  = rows.shift
-puts "keys:#{keys}"
-rows.each do |row|
-  puts name            = row[0]
-  puts column_count    = row[1]
-  puts grid_width      = row[2]
-  puts grid_height     = row[3]
-  AdTemplate.where(name: name, column_count: column_count, grid_width: grid_width, grid_height: grid_height).first_or_create
+config = {
+  name: "내일신문",
+  paper_size: "A2",
+  width: 1190.55,
+  height: 1683.78,
+  margin: 50,
+  page_count: 24,
+  sections: %w{one two three four five six seven eight nine ten twelve thirteen fourteen fifteen sixteen seventeen eightteen nineteen twenty twenty-one twenty-two twenty-three twenty-four}
+}
+publication = Publication.where(config).first_or_create
+
+
+issue_plan_path  = File.dirname(__FILE__) + "/../issue_plan.csv"
+if File.exist?(issue_plan_path)
+  spread_plan = File.open(issue_plan_path){|f| f.read}
+  date = Date.new(2016, 12, 5)
+  Issue.where(publication_id: publication.id, date: date, spread_plan: spread_plan).first_or_create
+end
+
+
+ad_table_path  = File.dirname(__FILE__) + "/../ad_table.csv"
+if File.exist?(ad_table_path)
+  ad_table = File.open(ad_table_path){|f| f.read}
+  rows  = CSV.parse(ad_table)
+  keys  = rows.shift
+  puts "keys:#{keys}"
+  rows.each do |row|
+    puts name            = row[0]
+    puts column_count    = row[1]
+    puts grid_width      = row[2]
+    puts grid_height     = row[3]
+    AdTemplate.where(name: name, column_count: column_count, grid_width: grid_width, grid_height: grid_height).first_or_create
+  end
 end
 
 
 GRID_PATTERNS = {
 
-  '3x3/6':[[0, 0, 3, 1], [0, 1, 2, 1], [2, 1, 1, 1], [0, 2, 1, 1], [1, 2, 1, 1], [2, 2, 1, 1]],
-  '3x3/7':[[0, 0, 3, 1], [0, 1, 1, 1], [1, 1, 1, 1], [2, 1, 1, 1], [0, 2, 1, 1], [1, 2, 1, 1], [2, 2, 1, 1]],
-  '3x3/8':[[0, 0, 1, 1], [1, 0, 1, 1], [2, 0, 1, 1], [0, 1, 1, 1], [1, 1, 1, 1], [2, 1, 1, 1], [0, 2, 1, 1], [1, 2, 2, 1]],
-  '3x3/8_1':[[0, 0, 1, 1], [1, 0, 1, 1], [2, 0, 1, 1], [0, 1, 1, 1], [1, 1, 1, 1], [2, 1, 1, 1], [0, 2, 2, 1], [2, 2, 1, 1]],
-  '3x3/8_2':[[0, 0, 2, 1], [2, 0, 1, 1], [0, 1, 1, 1], [1, 1, 1, 1], [2, 1, 1, 1], [0, 2, 1, 1], [1, 2, 1, 1], [2, 2, 1, 1]],
-  '3x3/9':[[0, 0, 1, 1], [1, 0, 1, 1], [2, 0, 1, 1], [0, 1, 1, 1], [1, 1, 1, 1], [2, 1, 1, 1], [0, 2, 1, 1], [1, 2, 1, 1], [2, 2, 1, 1]],
-  # '4x7/2':[],
-  # '4x7/3':[],
-  # '4x7/4':[],
-  # '4x7/5':[],
-  # '4x7/6':[],
-  # '4x7/7':[],
   '6x6/1':[[0, 0, 1, 1]],
   '6x6/3':[[0, 0, 1, 1], [0, 0, 1, 1], [0, 0, 1, 1]],
   '7x11/3':[[0, 0, 4, 6], [4, 0, 3, 6], [0, 6, 7, 5]],

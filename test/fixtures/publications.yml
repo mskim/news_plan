@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  paper_size: MyString
+  width: 1.5
+  height: 1.5
+  margin: 1.5
+  page_count: 1
+  sections: MyText
+
+two:
+  name: MyString
+  paper_size: MyString
+  width: 1.5
+  height: 1.5
+  margin: 1.5
+  page_count: 1
+  sections: MyText

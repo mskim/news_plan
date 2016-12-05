@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :publications
+  resources :publications
+  resources :issues
   resources :ad_templates
   resources :ad_templates
   resources :ad_templates

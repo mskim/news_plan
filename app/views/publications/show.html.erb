@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @publication.name %>
+</p>
+
+<p>
+  <strong>Paper size:</strong>
+  <%= @publication.paper_size %>
+</p>
+
+<p>
+  <strong>Width:</strong>
+  <%= @publication.width %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @publication.height %>
+</p>
+
+<p>
+  <strong>Margin:</strong>
+  <%= @publication.margin %>
+</p>
+
+<p>
+  <strong>Page count:</strong>
+  <%= @publication.page_count %>
+</p>
+
+<p>
+  <strong>Sections:</strong>
+  <%= @publication.sections %>
+</p>
+
+<%= link_to 'Edit', edit_publication_path(@publication) %> |
+<%= link_to 'Back', publications_path %>

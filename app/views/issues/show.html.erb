@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Publication:</strong>
+  <%= @issue.publication_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @issue.date %>
+</p>
+
+<p>
+  <strong>Spread plan:</strong>
+  <%= @issue.spread_plan %>
+</p>
+
+<%= link_to 'Edit', edit_issue_path(@issue) %> |
+<%= link_to 'Back', issues_path %>
