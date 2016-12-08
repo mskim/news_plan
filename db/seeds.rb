@@ -23,7 +23,6 @@ if File.exist?(ad_table_path)
 end
 
 
-__END__
 config = {
   name: "내일신문",
   paper_size: "A2",
