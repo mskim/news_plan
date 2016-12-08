@@ -1,8 +1,6 @@
 require 'csv'
 require 'date'
 
-
-
 ad_table_path  = File.dirname(__FILE__) + "/../ad_table.csv"
 if File.exist?(ad_table_path)
   ad_table = File.open(ad_table_path){|f| f.read}

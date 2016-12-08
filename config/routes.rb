@@ -1,18 +1,13 @@
 Rails.application.routes.draw do
   resources :ads
   resources :sections
-  resources :sections
-  resources :publications
   resources :publications
   resources :issues
   resources :ad_templates
   resources :ad_templates
-  resources :ad_templates
-  resources :article_boxes
   resources :article_boxes
   resources :section_templates
   resources :article_boxes
-  resources :section_templates
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
