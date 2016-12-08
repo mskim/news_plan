@@ -1,6 +1,29 @@
 require 'csv'
 require 'date'
 
+
+
+ad_table_path  = File.dirname(__FILE__) + "/../ad_table.csv"
+if File.exist?(ad_table_path)
+  ad_table = File.open(ad_table_path){|f| f.read}
+  rows  = CSV.parse(ad_table)
+  keys  = rows.shift
+  puts "keys:#{keys}"
+  rows.each do |row|
+    puts name            = row[0].gsub(" ","-")
+    puts column_count    = row[1]
+    puts grid_width      = row[2]
+    puts grid_height     = row[3]
+    # AdTemplate.where(name: name, column_count: column_count, grid_width: grid_width, grid_height: grid_height).first_or_create
+    # create template folder
+    section_template_folder = "#{Rails.root}/public/section_template"
+    puts ad_template_path = section_template_folder + "/#{name}"
+    system("mkdir -p #{ad_template_path}") unless File.directory?(ad_template_path)
+  end
+end
+
+
+__END__
 config = {
   name: "내일신문",
   paper_size: "A2",
@@ -21,20 +44,6 @@ if File.exist?(issue_plan_path)
 end
 
 
-ad_table_path  = File.dirname(__FILE__) + "/../ad_table.csv"
-if File.exist?(ad_table_path)
-  ad_table = File.open(ad_table_path){|f| f.read}
-  rows  = CSV.parse(ad_table)
-  keys  = rows.shift
-  puts "keys:#{keys}"
-  rows.each do |row|
-    puts name            = row[0]
-    puts column_count    = row[1]
-    puts grid_width      = row[2]
-    puts grid_height     = row[3]
-    AdTemplate.where(name: name, column_count: column_count, grid_width: grid_width, grid_height: grid_height).first_or_create
-  end
-end
 
 
 GRID_PATTERNS = {

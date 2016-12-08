@@ -1,10 +1,12 @@
 class Section < ActiveRecord::Base
   belongs_to :issue
+  has_many :ads
   after_create :setup
   
   def setup
     system("mkdir -p #{section_path}")          unless File.directory?(section_path)
     system("mkdir -p #{dropbox_section_path}")  unless File.directory?(dropbox_section_path)
+    copy_section_template
   end
     
   def section_path
@@ -16,14 +18,14 @@ class Section < ActiveRecord::Base
   end
   
   def profile
-    puts "+++++++in profile method"
-    underscrore_ad_type = ad_type.gsub(" ", "_")
+    grid_base = "7x15"  unless grid_base
+    box_count = 4       unless box_count
+    ad_type.gsub!(" ", "-")
     p = ""
-    p += "#{underscrore_ad_type}"
+    p += "#{ad_type}"
+    p += "/#{grid_base}"             
     p += "_H"                       if has_heading
-    puts "grid_base:#{grid_base}"   
-    p += "_#{grid_base}"            if grid_base
-    p += "_#{box_count}"            if grid_base
+    p += "/#{box_count}"            
     p
   end
   
@@ -32,7 +34,9 @@ class Section < ActiveRecord::Base
   end
   
   def copy_section_template
-    puts source = section_template_path
-    puts target = dropbox_section_path
+    source = section_template_path
+    target = dropbox_section_path
+    puts "cp -r #{source} #{target}"
+    system("cp -r #{source} #{target}/")
   end
 end
