@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205065328) do
+ActiveRecord::Schema.define(version: 20161229063322) do
 
   create_table "ad_templates", force: :cascade do |t|
     t.string   "name"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20161205065328) do
   create_table "issues", force: :cascade do |t|
     t.integer  "publication_id"
     t.date     "date"
-    t.text     "spread_plan"
+    t.text     "issue_plan"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20161205065328) do
     t.string   "ad_key"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.text     "box_data"
   end
 
   create_table "sections", force: :cascade do |t|

@@ -69,6 +69,6 @@ class SectionTemplatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def section_template_params
-      params.require(:section_template).permit(:grid_base, :grid_key, :has_heading)
+      params.require(:section_template).permit(:grid_base, :grid_key, :has_heading, :box_data)
     end
 end

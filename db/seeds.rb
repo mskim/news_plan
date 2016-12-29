@@ -35,9 +35,9 @@ publication = Publication.where(config).first_or_create
 
 issue_plan_path  = File.dirname(__FILE__) + "/../issue_plan.csv"
 if File.exist?(issue_plan_path)
-  spread_plan = File.open(issue_plan_path){|f| f.read}
+  issue_plan = File.open(issue_plan_path){|f| f.read}
   date = Date.new(2016, 12, 5)
-  Issue.where(publication_id: publication.id, date: date, spread_plan: spread_plan).first_or_create
+  Issue.where(publication_id: publication.id, date: date, issue_plan: issue_plan).first_or_create
 end
 
 

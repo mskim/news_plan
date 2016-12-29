@@ -3,7 +3,7 @@ class CreateIssues < ActiveRecord::Migration
     create_table :issues do |t|
       t.integer :publication_id
       t.date :date
-      t.text :spread_plan
+      t.text :issue_plan
 
       t.timestamps null: false
     end

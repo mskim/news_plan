@@ -29,4 +29,15 @@ class SectionTemplate < ActiveRecord::Base
 
   end
 
+  def collect_box_data
+    box_data_array = []
+    article_boxes.each do |box|
+      box_data_array << YAML::load(box.grid_frame)
+    end
+    box_data = box_data_array.to_yaml
+  end
+
+  def updata_article_box_grid_frame
+
+  end
 end
