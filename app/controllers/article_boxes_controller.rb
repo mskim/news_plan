@@ -41,6 +41,8 @@ class ArticleBoxesController < ApplicationController
   # PATCH/PUT /article_boxes/1.json
   def update
     respond_to do |format|
+      puts "article_box_params:#{article_box_params}"
+      puts "article_box_params.class:#{article_box_params.class}"
       if @article_box.update(article_box_params)
         format.html { redirect_to @article_box, notice: 'Article box was successfully updated.' }
         format.json { render :show, status: :ok, location: @article_box }
@@ -69,6 +71,6 @@ class ArticleBoxesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_box_params
-      params.require(:article_box).permit(:grid_frame, :section_template_id)
+      params.require(:article_box).permit( :section_template_id, grid_frame: [])
     end
 end
