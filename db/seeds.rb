@@ -1,5 +1,6 @@
 require 'csv'
 require 'date'
+require 'yaml'
 
 ad_table_path  = File.dirname(__FILE__) + "/../ad_table.csv"
 if File.exist?(ad_table_path)
@@ -61,20 +62,19 @@ GRID_PATTERNS = {
   '7x12/6_1':[[0, 0, 4, 3], [0, 3, 4, 3], [4, 0, 3, 6], [0, 6, 4, 6], [4, 6, 3, 3], [4, 3, 3, 3]],
   '7x12/6_2':[[0, 0, 7, 6], [0, 6, 4, 3], [0, 3, 2, 3], [2, 3, 2, 3], [4, 6, 3, 3], [4, 3, 3, 3]],
   '7x12/6_3':[[0, 0, 7, 6], [0, 6, 4, 3], [0, 3, 2, 3], [2, 3, 2, 3], [4, 6, 3, 3], [4, 3, 3, 3]],
-  
+
   '7x15/5':[[0, 0, 7, 6], [0, 6, 4, 3], [0, 3, 2, 3], [2, 3, 2, 3], [4, 6, 3, 3]],
   '7x15/6':[[0, 0, 7, 6], [0, 6, 4, 3], [0, 3, 2, 3], [2, 3, 2, 3], [4, 6, 3, 3],[0,0,1,1]],
   '7x15/6_1':[[0, 0, 7, 6], [0, 6, 4, 3], [0, 3, 2, 3], [2, 3, 2, 3], [4, 6, 3, 3], [4, 3, 3, 3]]
-  
+
   }
 
  GRID_PATTERNS.each do |k, v|
    puts k
    grid_key = k.to_s
    grid_base = grid_key.split('/').first
-   section = SectionTemplate.where(grid_key: grid_key, grid_base: grid_base).first_or_create
+   section = SectionTemplate.where(grid_key: grid_key, grid_base: grid_base, box_data:v.to_yaml).first_or_create
    v.each do |box|
      article = ArticleBox.where(grid_frame: box, section_template_id: section.id).first_or_create
    end
  end
- 

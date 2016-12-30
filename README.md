@@ -2,8 +2,32 @@
 
 Rails app for planning newspaper.
 
+## How doest it work?
+
+1. User registers
+    - name email,
+1. User creates his Publication
+    - period, heading Graphics, size, grid_base, ad_types
+    - selects theme
+1. For each issue, user creates issue template by providing issue_plan.csv
+1. When IssuePlan is created, issue template repository is created at layout server
+1. Each reporters pulls the repos for editing.
+1. When any of them pushes the edited content back,
+    - it updates PDF
+    - it updates html static site
+1. Whole process can be monitored as they get updated
+
 ## Preparation
-  - we prepare section_templates for ad_types and number of article_box, and Heading Page
+we prepare section_templates
+- ad_types
+- number of article_box
+- Heading Page
+
+## TODO by Designers
+- section.grid_frame by key_name
+- PDF sample that represents the layout
+- we also need layout sample by ad_type
+    - sample by article_box column_count
 
 ### To generate Issue Template
 1. Spreadsheet like data is entered

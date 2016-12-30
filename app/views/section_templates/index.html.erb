@@ -19,6 +19,7 @@
 <table>
   <thead>
     <tr>
+      <th>SVG</th>
       <th>Grid base</th>
       <th>Grid key</th>
       <th>Has heading</th>
@@ -29,6 +30,7 @@
   <tbody>
     <% @section_templates.each do |section_template| %>
       <tr>
+        <td><%= raw section_template.svg_thumb %></td>
         <td><%= section_template.grid_base %></td>
         <td><%= section_template.grid_key %></td>
         <td><%= section_template.has_heading %></td>

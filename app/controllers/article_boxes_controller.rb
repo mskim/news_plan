@@ -71,6 +71,6 @@ class ArticleBoxesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_box_params
-      params.require(:article_box).permit( :section_template_id, grid_frame: [])
+      params.require(:article_box).permit( :section_template_id, :grid_frame)
     end
 end
